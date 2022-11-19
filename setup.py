@@ -17,13 +17,6 @@ from pathlib import Path
 from typing import List
 
 import setuptools
-import torch
-from torch.utils.cpp_extension import (
-    CUDA_HOME,
-    BuildExtension,
-    CppExtension,
-    CUDAExtension,
-)
 
 this_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -153,6 +146,14 @@ def get_flash_attention_extensions(cuda_version: int, extra_compile_args):
 
 
 def get_extensions():
+    import torch
+    from torch.utils.cpp_extension import (
+        CUDA_HOME,
+        BuildExtension,
+        CppExtension,
+        CUDAExtension,
+    )
+
     this_dir = os.path.dirname(os.path.abspath(__file__))
     extensions_dir = os.path.join(this_dir, "xformers", "components")
 
